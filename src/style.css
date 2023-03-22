@@ -1,0 +1,30 @@
+.gameboard {
+    display: flex;
+    gap: 2rem;
+}
+
+.board-1, .board-2 {
+    display: flex;
+    flex-wrap: wrap;
+    width: 310px;
+}
+
+.box {
+    outline: 1px solid;
+    margin-top: 1px;
+    margin-left: 1px;
+    width: 30px;
+    height: 30px;
+}
+
+.box:hover {
+    background-color: rgb(177, 175, 175);
+}
+
+.box-ai {
+    outline: 1px solid;
+    margin-top: 1px;
+    margin-left: 1px;
+    width: 30px;
+    height: 30px;
+}

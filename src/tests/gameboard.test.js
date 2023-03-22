@@ -101,3 +101,14 @@ test('if all ship sank return true', () => {
 test('if not all ships sank, return false', () => {
     expect(gameboard.allShipSank()).toBe(false);
 });
+
+//testing color returner for the board
+test('miss should return #94a3b8', () => {
+    expect(gameboard.getColor(1,1)).toBe('#94a3b8');
+})
+test('hit should return #ef4444', () => {
+    expect(gameboard.getColor(2,2)).toBe('#ef4444');
+})
+test('nothing should return #f8fafc', () => {
+    expect(gameboard.getColor(9,9)).toBe('#f8fafc');
+})

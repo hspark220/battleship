@@ -19,7 +19,7 @@ const Gameboard = () => {
 
     const placeShip = (x,y, length, direction) => {
         if (x < 0 || y < 0 || x > 10 || y > 10 || isNaN(x) || isNaN(y)) return null;
-        const ship = new Ship(length);
+        const ship = Ship(length);
         _shipCount += length;
         if (direction == 'x') {
             if (x + length > board[y].length) {return null}
@@ -37,7 +37,7 @@ const Gameboard = () => {
     }
 
     const receiveAttack = (x, y) => {
-        if(x < 0 || y < 0 || x > 10 || y > 10 || isNaN(x) || isNaN(y)) return null;
+        if(x < 0 || y < 0 || x >= 10 || y >= 10 || isNaN(x) || isNaN(y)) return null;
         if (board[x][y] == 'hit' || board[x][y] == 'miss') return null
         
         if (typeof(board[x][y]) != 'object' || board[x][y] == null) {
@@ -56,7 +56,13 @@ const Gameboard = () => {
         return false
     }
 
-    return {board, placeShip, receiveAttack, allShipSank}
+    const getColor = (x,y) => {
+        if (board[x][y] == 'miss') return '#94a3b8';
+        else if (board[x][y] == 'hit') return '#ef4444';
+        else return '#f8fafc';
+    }
+
+    return {board, placeShip, receiveAttack, allShipSank, getColor}
 };
 
 export default Gameboard;

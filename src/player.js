@@ -37,7 +37,7 @@ const Player = (name) => {
     }
 
     const isLegalMove = (x, y, board) => {
-        if(x < 0 || y < 0 || x > 10 || y > 10 || isNaN(x) || isNaN(y)) return false;
+        if(x < 0 || y < 0 || x >= 10 || y >= 10 || isNaN(x) || isNaN(y)) return false;
         if (board.board[x][y] == 'hit' || board.board[x][y] == 'miss') return false;
         return true;
     }

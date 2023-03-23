@@ -68,7 +68,7 @@ const Game = () => {
 
         for (let i = 0; i < 10; i++) {
             for (let j = 0; j < 10; j++) {
-                const box = document.getElementById(`board1:x${i}y${j}`);
+                const box = document.getElementById(`board1:x${j}y${i}`);
                 box.setAttribute('class','box box-hover')
                 box.addEventListener('click', (e) => {
                     if (turn == 0) {
@@ -97,6 +97,14 @@ const Game = () => {
     const _placeShips = (playerBoard, computerBoard) => {
         const shipLengths = [5,4,3,3,2];
         let shipIndex = 0;
+        let direction = 'x';
+        const directionButton = document.createElement('button');
+        directionButton.innerHTML = 'x';
+        directionButton.addEventListener('click', () => {
+            direction = direction == 'x' ? 'y' : 'x';
+            directionButton.innerHTML = direction == 'x' ? 'x' : 'y';
+        })
+        document.querySelector('.gameboard').append(directionButton);
         
         for (let i = 0; i < 10; i++) {
             for (let j = 0; j < 10; j++) {
@@ -105,10 +113,9 @@ const Game = () => {
                 box.addEventListener('click', () => {
                     if (shipIndex < 5) {
                         console.log(shipIndex);
-                        if (playerBoard.placeShip(i,j,shipLengths[shipIndex], 'x') != null) {
-                            _colorShips(i,j,shipLengths[shipIndex], 'x');
+                        if (playerBoard.placeShip(i,j,shipLengths[shipIndex], direction) != null) {
+                            _colorShips(i,j,shipLengths[shipIndex], direction);
                             shipIndex++;
-                            console.log(playerBoard.board);
                             if (shipIndex == 5) _enableBoard(playerBoard, computerBoard);
                         } 
                     }
@@ -117,6 +124,8 @@ const Game = () => {
         }
         
         computerBoard.placeShip(0,0,5,'x');
+        console.log(computerBoard.board);
+        console.log(playerBoard.board);
     }
 
     const _colorShips = (x,y, length, direction) => {

@@ -37,7 +37,6 @@ const Gameboard = () => {
                 x++;
                 
             }
-            console.log('hello');
             return 1;
         } else return null;
     }

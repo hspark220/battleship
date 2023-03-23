@@ -1,6 +1,13 @@
 .gameboard {
-    display: flex;
+    display: grid;
+    grid-template-columns: 360px 100px 360px;
+    grid-template-areas:
+    "computer button player";
     gap: 2rem;
+}
+
+button {
+    grid-area: button;
 }
 
 .player, .computer {
@@ -10,7 +17,7 @@
     "title title"
     "y-axis board"
     "blank x-axis";
-    width: 500px;
+    width: 360px;
 }
 .title {
     grid-area: title;

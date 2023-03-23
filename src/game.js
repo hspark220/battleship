@@ -102,14 +102,13 @@ const Game = () => {
             for (let j = 0; j < 10; j++) {
                 const box = document.getElementById(`board2:x${i}y${j}`);
 
-                box.addEventListener('click', (e) => {
+                box.addEventListener('click', () => {
                     if (shipIndex < 5) {
                         console.log(shipIndex);
                         if (playerBoard.placeShip(i,j,shipLengths[shipIndex], 'x') != null) {
-                            playerBoard.placeShip(i,j,shipLengths[shipIndex], 'x');
-                            _colorShips(i,j,shipLengths[shipIndex]);
+                            _colorShips(i,j,shipLengths[shipIndex], 'x');
                             shipIndex++;
-                            console.log(playerBoard);
+                            console.log(playerBoard.board);
                             if (shipIndex == 5) _enableBoard(playerBoard, computerBoard);
                         } 
                     }
@@ -121,13 +120,14 @@ const Game = () => {
     }
 
     const _colorShips = (x,y, length, direction) => {
+        console.log(direction == 'x');
         for (let i = 0; i < length; i++) {
             if (direction == 'x') {
-                const box = document.getElementById(`board2:x${x+i}y${y}`);
-                box.style.backgroundColor = '#94a3b8';
-            } else {
                 const box = document.getElementById(`board2:x${x}y${y+i}`);
-                box.style.backgroundColor = '#94a3b8';
+                box.style.backgroundColor = '#fcd34d';
+            } else {
+                const box = document.getElementById(`board2:x${x+i}y${y}`);
+                box.style.backgroundColor = '#fcd34d';
             }
             
         }

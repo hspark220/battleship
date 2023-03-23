@@ -3,10 +3,49 @@
     gap: 2rem;
 }
 
+.player, .computer {
+    display: grid;
+    grid-template: 4rem 1fr 2rem / 2rem 1fr;
+    grid-template-areas: 
+    "title title"
+    "y-axis board"
+    "blank x-axis";
+    width: 600px;
+}
+.title {
+    grid-area: title;
+    align-self: center;
+    margin: 0;
+}
+.y-axis {
+    grid-area: y-axis;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.y-axis p {
+    margin: 1px 0 0 1px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+}
+.x-axis {
+    grid-area: x-axis;
+    display: flex;
+    align-items: center;
+}
+.x-axis p {
+    margin: 1px 0 0 1px;
+    width: 30px;
+    display: flex;
+    justify-content: center;
+}
+
 .board-1, .board-2 {
+    grid-area: board;
     display: flex;
     flex-wrap: wrap;
-    width: 310px;
+    width: 320px;
 }
 
 .box {

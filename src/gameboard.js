@@ -39,7 +39,7 @@ const Gameboard = () => {
         } else return null;
     }
 
-    const receiveAttack = (x, y) => {
+    const receiveAttack = (x,y) => {
         if(x < 0 || y < 0 || x >= 10 || y >= 10 || isNaN(x) || isNaN(y)) return null;
         if (board[x][y] == 'hit' || board[x][y] == 'miss') return null
         
@@ -59,7 +59,9 @@ const Gameboard = () => {
         return false
     }
 
-    const getColor = (x,y) => {
+    const getColor = (y,x) => {
+        console.log(`color coordinates ${x} ${y}`)
+        console.log(board[x][y]);
         if (board[x][y] == 'miss') return '#94a3b8';
         else if (board[x][y] == 'hit') return '#ef4444';
         else return '#f8fafc';

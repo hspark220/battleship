@@ -5,10 +5,8 @@ const Game = () => {
 
 
     const _printBoard = () => {
-
         _addAxis();
 
-        
         const board1 = document.querySelector('.board-1');
         const board2 = document.querySelector('.board-2');
         
@@ -33,12 +31,12 @@ const Game = () => {
 
     const _checkEndGame = (board) => {
 
-        if (board.allShipSank()) console.log('Game Ended! player wins');
+        //if (board.allShipSank()) console.log('Game Ended! player wins');
+        //console.log(board);
     }
 
     const _addAxis = () => {
         const yaxis = document.querySelectorAll('.y-axis');
-        console.log(yaxis);
         const xaxis = document.querySelectorAll('.x-axis');
         const alphabeth = ['A','B','C','D','E','F','G','H','I','J']
 
@@ -63,13 +61,10 @@ const Game = () => {
     }
 
     const _enableBoard = (playerBoard, computerBoard) => {
-        playerBoard = Gameboard();
-        computerBoard = Gameboard();
         const player1 = Player('player1');
         const computer = Player('computer');
 
         let turn = 0;
-        const board1 = document.querySelector('.board-1');
 
         for (let i = 0; i < 10; i++) {
             for (let j = 0; j < 10; j++) {
@@ -85,8 +80,9 @@ const Game = () => {
                             //computers move
                             const computerMove = computer.aiAttack(playerBoard);
                             const compBox = document.getElementById(`board2:x${computerMove.charAt(11)}y${computerMove.charAt(15)}`)
-                            compBox.style.backgroundColor = playerBoard.getColor(computerMove.charAt(11),computerMove.charAt(15));
+                            compBox.style.backgroundColor = playerBoard.getColor(computerMove.charAt(15),computerMove.charAt(11));
                             _checkEndGame(playerBoard);
+
                         } else {
                             console.log('invalid move')
                         }
@@ -99,8 +95,6 @@ const Game = () => {
     }
 
     const _placeShips = (playerBoard, computerBoard) => {
-        const board2 = document.querySelector('.board-2');
-
         const shipLengths = [5,4,3,3,2];
         let shipIndex = 0;
         
@@ -115,14 +109,15 @@ const Game = () => {
                             playerBoard.placeShip(i,j,shipLengths[shipIndex], 'x');
                             _colorShips(i,j,shipLengths[shipIndex]);
                             shipIndex++;
+                            console.log(playerBoard);
                             if (shipIndex == 5) _enableBoard(playerBoard, computerBoard);
                         } 
                     }
                 });
-
-                board2.append(box);
             }
         }
+        
+        computerBoard.placeShip(0,0,5,'x');
     }
 
     const _colorShips = (x,y, length, direction) => {

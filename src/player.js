@@ -7,6 +7,7 @@ const Player = (name) => {
     }
 
     const attack = (y, x, board) => {
+        console.log(`attack coordinates: ${x} ${y}`);
         if(!isLegalMove(x,y,board)) return null;
         board.receiveAttack(x,y);
         return `${name} x:${x} y:${y}`
@@ -20,6 +21,7 @@ const Player = (name) => {
             randomY = Math.floor(Math.random()*11);
         }
         board.receiveAttack(randomX, randomY);  
+        console.log(`attack coordinates: ${randomX} ${randomY}`);
         return `${name} x:${randomX} y:${randomY}`;
         
     }

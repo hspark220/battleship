@@ -6,7 +6,7 @@ const Player = (name) => {
         return name;
     }
 
-    const attack = (x, y, board) => {
+    const attack = (y, x, board) => {
         if(!isLegalMove(x,y,board)) return null;
         board.receiveAttack(x,y);
         return `${name} x:${x} y:${y}`

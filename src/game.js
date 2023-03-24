@@ -115,7 +115,7 @@ const Game = () => {
                         while (true) {
                             let randomX = Math.floor(Math.random()*11);
                             let randomY = Math.floor(Math.random()*11);
-                            if(computerBoard.placeShip(randomX, randomY, shipLengths[shipIndex], direction) != null ) break;
+                            if(computerBoard.placeShip(randomX, randomY, shipLengths[shipIndex], _randomDirection()) != null ) break;
                         }
                         if (playerBoard.placeShip(i,j,shipLengths[shipIndex], direction) != null) {
                             _colorShips(i,j,shipLengths[shipIndex], direction);
@@ -141,6 +141,11 @@ const Game = () => {
             }
             
         }
+    }
+
+    const _randomDirection = () => {
+        let randomDirection = Math.floor(Math.random()*3);
+        return randomDirection == 1 ? 'x' : 'y';
     }
 
     const playGame = () => {

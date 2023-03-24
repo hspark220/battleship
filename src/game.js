@@ -9,12 +9,14 @@ const Game = () => {
 
         const board1 = document.querySelector('.board-1');
         const board2 = document.querySelector('.board-2');
+        console.log(board2);
         
         for (let i = 0; i < 10; i++) {
             for (let j = 0; j < 10; j++) {
                 const box = document.createElement('div');
                 box.setAttribute('class',`box-ai`)
                 box.setAttribute('id',`board2:x${i}y${j}`)
+                box.style.backgroundColor = 'white';
 
                 board2.append(box);
             }
@@ -30,7 +32,12 @@ const Game = () => {
     }
 
     const _checkEndGame = (board, name) => {
+        if (board.allShipSank()) {
+            alert(`${name} WON!`);
+            playGame();
 
+        }
+        
         //if (board.allShipSank()) console.log('Game Ended! player wins');
         //console.log(board);
     }
@@ -148,9 +155,49 @@ const Game = () => {
         return randomDirection == 1 ? 'x' : 'y';
     }
 
+    const _removeBoard = () => {
+        document.querySelector('.computer').remove();
+        document.querySelector('.player').remove();
+        
+
+        const computer = document.createElement('div');
+        const player = document.createElement('div');
+        computer.setAttribute('class','computer');
+        player.setAttribute('class','player');
+        
+        const board2 = document.createElement('div');
+        const board1 = document.createElement('div');
+        board1.setAttribute('class','board-1');
+        board2.setAttribute('class','board-2');
+
+        const yaxis = document.createElement('div');
+        const xaxis = document.createElement('div');
+        yaxis.setAttribute('class','y-axis');
+        xaxis.setAttribute('class','x-axis');
+
+        const yaxis2 = document.createElement('div');
+        const xaxis2 = document.createElement('div');
+        yaxis2.setAttribute('class','y-axis');
+        xaxis2.setAttribute('class','x-axis');
+
+        const title = document.createElement('h2');
+        const title2 = document.createElement('h2');
+        title.setAttribute('class','title');
+        title2.setAttribute('class','title');
+        title.innerHTML = 'Computer';
+        title2.innerHTML = 'Player';
+
+        computer.append(title,board1, yaxis, xaxis);
+        player.append(title2, board2, yaxis2, xaxis2);
+
+        document.querySelector('.gameboard').append(computer, player);
+    }
+
     const playGame = () => {
+        _removeBoard();
         const playerBoard = Gameboard();
         const computerBoard = Gameboard();
+        console.log(computerBoard);
         _printBoard(playerBoard, computerBoard);
         _placeShips(playerBoard, computerBoard);
         

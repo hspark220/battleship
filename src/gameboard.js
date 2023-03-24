@@ -68,7 +68,6 @@ const Gameboard = () => {
     }
 
     const getColor = (y,x) => {
-        console.log(board[x][y]);
         if (board[x][y] == 'miss') return '#94a3b8';
         else if (board[x][y] == 'hit') return '#ef4444';
         else return '#f8fafc';

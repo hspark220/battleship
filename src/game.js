@@ -105,14 +105,18 @@ const Game = () => {
             directionButton.innerHTML = direction == 'x' ? 'x' : 'y';
         })
         document.querySelector('.gameboard').append(directionButton);
-        
+
         for (let i = 0; i < 10; i++) {
             for (let j = 0; j < 10; j++) {
                 const box = document.getElementById(`board2:x${i}y${j}`);
 
                 box.addEventListener('click', () => {
                     if (shipIndex < 5) {
-                        console.log(shipIndex);
+                        while (true) {
+                            let randomX = Math.floor(Math.random()*11);
+                            let randomY = Math.floor(Math.random()*11);
+                            if(computerBoard.placeShip(randomX, randomY, shipLengths[shipIndex], direction) != null ) break;
+                        }
                         if (playerBoard.placeShip(i,j,shipLengths[shipIndex], direction) != null) {
                             _colorShips(i,j,shipLengths[shipIndex], direction);
                             shipIndex++;
@@ -122,10 +126,7 @@ const Game = () => {
                 });
             }
         }
-        
-        computerBoard.placeShip(0,0,5,'x');
         console.log(computerBoard.board);
-        console.log(playerBoard.board);
     }
 
     const _colorShips = (x,y, length, direction) => {

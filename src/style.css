@@ -55,22 +55,18 @@ button {
     width: 320px;
 }
 
-.box {
-    outline: 1px solid;
-    margin-top: 1px;
-    margin-left: 1px;
+.box-ai, .box {
+    border: 1px solid;
+    /* margin-top: 1px;
+    margin-left: 1px; */
+    margin-right: -1px;
+    margin-bottom: -1px;
     width: 30px;
     height: 30px;
 }
+
 
 .box-hover:hover {
     background-color: rgb(177, 175, 175);
 }
 
-.box-ai {
-    outline: 1px solid;
-    margin-top: 1px;
-    margin-left: 1px;
-    width: 30px;
-    height: 30px;
-}

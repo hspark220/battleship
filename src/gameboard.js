@@ -19,7 +19,14 @@ const Gameboard = () => {
 
     const placeShip = (y,x, length, direction) => {
         if (x < 0 || y < 0 || x > 10 || y > 10 || isNaN(x) || isNaN(y)) return null;
-        if (board[y][x] != null) return null;
+        for (let i = 0; i < length; i++) {
+            if (direction == 'x') {
+                if(board[y][x+i] != null) return null;
+            } else {
+                if(board[y+i][x] != null) return null;
+            }
+        }
+
         const ship = Ship(length);
         _shipCount += length;
         if (direction == 'y') {

@@ -1,13 +1,24 @@
+header {
+    display: flex;
+    justify-content: center;
+}
+
 .gameboard {
     display: grid;
-    grid-template-columns: 360px 100px 360px;
+    grid-template: 1fr 30px /  360px 360px;
     grid-template-areas:
-    "computer button player";
-    gap: 2rem;
+    "computer player"
+    "blank button";
+    column-gap: 4rem;
+    justify-content: center;
 }
 
 button {
     grid-area: button;
+    width: 60px;
+    height: 20px;
+    align-self: center;
+    justify-self: center;
 }
 
 .player, .computer {
@@ -22,6 +33,7 @@ button {
 .title {
     grid-area: title;
     align-self: center;
+    justify-self: center;
     margin: 0;
 }
 .y-axis {

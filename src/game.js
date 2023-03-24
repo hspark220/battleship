@@ -29,7 +29,7 @@ const Game = () => {
         }
     }
 
-    const _checkEndGame = (board) => {
+    const _checkEndGame = (board, name) => {
 
         //if (board.allShipSank()) console.log('Game Ended! player wins');
         //console.log(board);
@@ -75,13 +75,13 @@ const Game = () => {
                         if (player1.attack(i, j, computerBoard) != null) {
                             //players move
                             box.style.backgroundColor = computerBoard.getColor(i,j);
-                            _checkEndGame(computerBoard);
+                            _checkEndGame(computerBoard, 'player1');
 
                             //computers move
                             const computerMove = computer.aiAttack(playerBoard);
                             const compBox = document.getElementById(`board2:x${computerMove.charAt(11)}y${computerMove.charAt(15)}`)
                             compBox.style.backgroundColor = playerBoard.getColor(computerMove.charAt(15),computerMove.charAt(11));
-                            _checkEndGame(playerBoard);
+                            _checkEndGame(playerBoard, 'computer');
 
                         } else {
                             console.log('invalid move')
